@@ -1,7 +1,6 @@
 import message
 
 OLDBAUD = 9600
-NEWBAUD = 4800
 
 print "Setting NAV5 config to airborne mode..."
 navconfig = message.UBXMessage('CFG-NAV5', "\x01\x00\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
@@ -19,5 +18,5 @@ else:
     print "Didn't get ACK."
     
 print "Verifying NAV settings..."
-(settings, ack) = message.send(message.UBXPollNav5(), NEWBAUD)
+(settings, ack) = message.send(message.UBXPollNav5(), OLDBAUD)
 print "New settings: ", settings.payload
